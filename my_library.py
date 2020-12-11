@@ -82,5 +82,5 @@ def calc_outliers_cols(mean_val, sigma_val, col_name):
 def normalize_cols(col_name):
   pcol_val = wrangled_heart[col_name].to_list()
   norm_pcol_val = up.norm_a_list(pcol_val)
-  print(norm_pcol_val[:10])
+  print(norm_pcol_val[:5])
   wrangled_heart[col_name] = norm_pcol_val
