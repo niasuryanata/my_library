@@ -70,3 +70,17 @@ def all_bayes(training_table, word_bag, bio):
     result = naive_bayes(training_table, word_bag, bio, c)
     results += [[result,c]]
   return sorted(results, reverse=True)
+
+
+def calc_outliers_cols(mean_val, sigma_val, col_name):
+  low_wall_val = mean_val - 3 * sigma_val
+  high_wall_val = mean_val + 3 * sigma_val
+  print(low_wall_val)
+  print(high_wall_val)
+  wrangled_heart.loc[wrangled_heart[col_name] > high_wall_val, col_name] = high_wall_val
+  
+def normalize_cols(col_name):
+  pcol_val = wrangled_heart[col_name].to_list()
+  norm_pcol_val = up.norm_a_list(pcol_val)
+  print(norm_pcol_val[:10])
+  wrangled_heart[col_name] = norm_pcol_val
